@@ -1,0 +1,47 @@
+/*
+Project 02
+Spaceship Interface
+Arduino Starter Kit
+
+Pedro Ruiz
+
+May 28th 2018
+*/
+
+int switchState = 0;
+
+/*
+Setting up the LEDs to Outputs 
+and the Switch to Input
+*/
+
+void setup() {
+   pinMode(3,OUTPUT);
+   pinMode(4,OUTPUT);
+   pinMode(5,OUTPUT);
+   pinMode(2,INPUT);
+}
+
+void loop() {
+  switchState = digitalRead(2);
+    
+  if (switchState == LOW) {
+    // the button is not pressed
+    
+    digitalWrite(3, HIGH); //green
+    digitalWrite(4, LOW);
+    digitalWrite(5, LOW);
+  }
+  else {
+    // the button is pressed
+    digitalWrite(3, LOW);
+    digitalWrite(4, HIGH);
+    digitalWrite(5, HIGH);
+    
+    delay(250); //Wait for a quarter second
+    // togle the LEDs
+    digitalWrite(4, HIGH);
+    digitalWrite(5, LOW);
+    delay(250); //Wait for a quarter second
+  }
+} // go back to beginning of loop
